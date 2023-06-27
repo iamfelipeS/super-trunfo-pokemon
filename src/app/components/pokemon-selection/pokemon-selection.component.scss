@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 .background {
   top: 0;
@@ -14,3 +15,12 @@
   width: 300px;
   height: 200px;
 }
+=======
+.pokemon-selection-container {
+  background-image: url('../../../assets/Pokemon pack1/laboratorio.png');
+  background-size: cover;  /* this will make sure the image always covers the whole container */
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;  /* or any other value that suits your needs */
+}
+>>>>>>> 667c322e825b8a284e044f789f503099c72f31e6

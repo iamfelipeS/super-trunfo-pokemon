@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./pokemon-selection.component.scss']
 })
 export class PokemonSelectionComponent {
+<<<<<<< HEAD
   
+=======
+>>>>>>> 667c322e825b8a284e044f789f503099c72f31e6
 
 }

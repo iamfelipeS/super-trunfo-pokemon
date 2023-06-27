@@ -8,18 +8,9 @@ import { GameBoardComponent } from './components/game-board/game-board.component
 import { AuthGuard } from '../app/services/authguard.service';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    component: HomeComponent,
-    children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
-      { path: '', redirectTo: 'login', pathMatch: 'full' }
-    ]
-  },
-  { path: '', redirectTo: 'home/login', pathMatch: 'full' },
-  { path: 'gameboard', component: GameBoardComponent, canActivate: [AuthGuard] },
-  { path: 'pokeselection', component: PokemonSelectionComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'gameboard', component: GameBoardComponent }, // Adicione esta linha
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({
