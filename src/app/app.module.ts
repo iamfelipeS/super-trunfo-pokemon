@@ -1,3 +1,6 @@
+import { AuthGuard } from './services/authguard.service';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatCardModule } from '@angular/material/card';
@@ -12,7 +15,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { RegisterComponent } from './components/register/register.component';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
+import { PokemonSelectionComponent } from './components/pokemon-selection/pokemon-selection.component';
+import { FooterComponent } from './components/footer/footer.component';
 
+const firebaseConfig = {
+  apiKey: "AIzaSyBE2gfpsz8oZBOE61mn4RpdNjT9qdkrhDI",
+  authDomain: "supertrunfopokemon.firebaseapp.com",
+  projectId: "supertrunfopokemon",
+  storageBucket: "supertrunfopokemon.appspot.com",
+  messagingSenderId: "991015289846",
+  appId: "1:991015289846:web:ac91cc4c3ed086aa76fdd7",
+  measurementId: "G-1VL1XMK8KL"
+};
 
 @NgModule({
   declarations: [
@@ -21,7 +39,11 @@ import { HomeComponent } from './components/home/home.component';
     CardComponent,
     PlayerComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent,
+    RegisterComponent,
+    PokemonSelectionComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,9 +52,27 @@ import { HomeComponent } from './components/home/home.component';
     BrowserAnimationsModule,
     MatCardModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    SocialLoginModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
   ],
-  providers: [],
+
+    providers: [
+      AuthGuard, // <--- Corrigido
+      {
+        provide: 'SocialAuthServiceConfig',
+        useValue: {
+          autoLogin: false,
+          providers: [
+            {
+              provide: GoogleLoginProvider.PROVIDER_ID, 
+            provider: new GoogleLoginProvider('991015289846-12llmt0clq7u6621njlvmf9lcomn9rqj.apps.googleusercontent.com')
+          }
+        ]
+      } as unknown as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

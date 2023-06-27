@@ -1,8 +1,8 @@
 <div class="main-content">
   <div class="container">
-    <div class="flip" [ngClass]="{'flipped': !isLoginView}">
-      <div class="boxCard" *ngIf="isLoginView">
-        <h2>Login</h2>
+    <div class="flip">
+      <div class="boxCard">
+        <h2><img src="../../../assets/pokemon pack1/pokebola login.png" alt="imagem pokebola"> Login</h2>
         <form (ngSubmit)="onLoginSubmit()" class="form-login">
           <input type="email" id="email" name="email" [(ngModel)]="loginEmail" required placeholder="E-mail" />
           <input type="password" id="password" name="password" [(ngModel)]="loginPassword" required placeholder="Senha" />
@@ -12,22 +12,9 @@
             <span>Entrar com o Google</span>
           </button>
         </form>
-        <a (click)="toggleView()">Clique aqui para se registrar</a>
-      </div>
-
-      <div class="boxCard2" *ngIf="!isLoginView">
-        <h2>Cadastro</h2>
-        <form (ngSubmit)="onRegisterSubmit()">
-          <input type="text" id="registerName" name="registerName" [(ngModel)]="registerName" placeholder="Nome">
-          <input type="email" id="registerEmail" name="registerEmail" [(ngModel)]="registerEmail" required placeholder="E-mail"/>
-          <input type="password" id="registerPassword" name="registerPassword" [(ngModel)]="registerPassword" required placeholder="Senha" />
-          <input (blur)="onPassword2Blur()" type="password" id="registerPassword2" name="registerPassword2" [(ngModel)]="registerPassword2" required placeholder="Confirmar senha" />
-          <button type="submit">Cadastrar</button>
-        </form>
-        <a (click)="toggleView(); onFlip()">Clique aqui para entrar</a>
+        <a routerLink="/home/register">Clique aqui para se registrar</a>
+        <a routerLink="/pokeselection">Go to Pokemon Selection</a>
       </div>
     </div>
   </div>
 </div>
-
-
